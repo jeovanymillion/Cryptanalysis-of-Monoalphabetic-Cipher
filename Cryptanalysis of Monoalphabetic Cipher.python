@@ -1,0 +1,9 @@
+def frequency_analysis(ciphertext):
+    english_freq_order = 'etaoinshrdlucmfwypvbgkjqxz'
+    cipher_freq = Counter(ciphertext)
+    sorted_cipher_chars = [char for char, _ in cipher_freq.most_common()]
+
+    mapping = {cipher: eng for cipher, eng in zip(sorted_cipher_chars, english_freq_order)}
+    decrypted_text = ''.join(mapping.get(char, char) for char in ciphertext)
+
+    return decrypted_text
